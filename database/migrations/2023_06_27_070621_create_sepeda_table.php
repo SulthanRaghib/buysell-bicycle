@@ -16,6 +16,10 @@ return new class extends Migration
             $table->string('merek_sepeda');
             $table->string('deskripsi_sepeda');
             $table->integer('harga_sepeda');
+            $table->foreignId('id_mitra')->constrained(
+                table: 'mitra',
+                column: 'id_mitra'
+            );
             $table->timestamps();
         });
     }
