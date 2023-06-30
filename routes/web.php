@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\RoleController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,7 +15,23 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('home');
+    return view('backend');
+});
+
+Route::get('/blank-page', function () {
+    return view('pages.blank');
+});
+
+Route::get('/role', [RoleController::class, 'index'])->name('role.index');
+Route::get('/role/create', [RoleController::class, 'create'])->name('role.create');
+Route::post('/role', [RoleController::class, 'store'])->name('role.store');
+Route::get('/role/edit/{id_role}', [RoleController::class, 'edit'])->name('role.edit');
+Route::put('/role/{id_role}', [RoleController::class, 'update'])->name('role.update');
+Route::delete('/role/{id_role}', [RoleController::class, 'destroy'])->name('role.destroy');
+
+
+Route::get('tables', function () {
+    return view('pages.tables');
 });
 
 Route::get('/home', function () {
